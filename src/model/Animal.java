@@ -19,7 +19,7 @@ public class Animal {
             throw new AnimalInexistenteException("Animal inexistente!");
         }
         if (!(objeto instanceof TipoAnimal)) {
-            throw new AnimalInexistenteException("Não se trata de um animal, classe inválida!");
+            throw new AnimalInexistenteException("Não se trata de um TipoAnimal, classe inválida!");
         }
         this.tipoAnimal = (TipoAnimal) objeto;
     }
@@ -37,7 +37,4 @@ public class Animal {
         return this.tipoAnimal.emitirSom();
     }
 
-    public void lancaExcecao() {
-        throw new IllegalArgumentException("animal inexistente");
-    }
 }
