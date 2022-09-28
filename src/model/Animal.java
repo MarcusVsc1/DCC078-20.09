@@ -8,22 +8,12 @@ public class Animal {
     private Float peso;
     private TipoAnimal tipoAnimal;
 
-
-    public Animal(String tipoAnimal) throws AnimalInexistenteException {
-        Class classe = null;
-        Object objeto = null;
-        try {
-            classe = Class.forName("model." + tipoAnimal);
-            objeto = classe.getDeclaredConstructor().newInstance();
-        } catch (Exception ex) {
-            throw new AnimalInexistenteException("Animal inexistente!");
+    public Animal(TipoAnimal tipoAnimal) throws AnimalInexistenteException {
+        if(tipoAnimal == null) {
+            throw new NullPointerException("Animal nulo - INVÁLIDO");
         }
-        if (!(objeto instanceof TipoAnimal)) {
-            throw new AnimalInexistenteException("Não se trata de um TipoAnimal, classe inválida!");
-        }
-        this.tipoAnimal = (TipoAnimal) objeto;
+        this.tipoAnimal = tipoAnimal;
     }
-
 
     public Float getPeso() {
         return peso;
